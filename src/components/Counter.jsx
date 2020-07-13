@@ -6,6 +6,8 @@ const Counter = ({
   increment,
   decrement,
   reset,
+  undo,
+  redo,
 }) => (
   <span>
     <b>Counter:</b> {count}{' '}
@@ -17,6 +19,12 @@ const Counter = ({
     </button>{' '}
     <button type="button" onClick={reset}>
       reset
+    </button>{' '}
+    <button type="button" onClick={undo}>
+      undo
+    </button>{' '}
+    <button type="button" onClick={redo}>
+      redo
     </button>
   </span>
 );
@@ -27,7 +35,9 @@ Counter.propTypes = {
   count: PropTypes.number,
   decrement: PropTypes.func.isRequired,
   increment: PropTypes.func.isRequired,
+  redo: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,
+  undo: PropTypes.func.isRequired,
 };
 
 Counter.defaultProps = {
