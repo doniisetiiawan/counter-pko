@@ -1,9 +1,11 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { ActionCreators } from 'redux-undo';
 import Counter from '../components/Counter';
-import { increment, decrement, reset } from '../actions';
-import { redo, undo } from '../undoable';
+import { decrement, increment, reset } from '../actions';
+
+const { undo, redo } = ActionCreators;
 
 const mapStateToProps = (state) => {
   const { counter } = state;
