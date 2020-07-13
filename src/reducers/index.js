@@ -1,9 +1,10 @@
 import { combineReducers } from 'redux';
 
 import counterReducer from './counter';
+import undoable from '../undoable';
 
 const appReducer = combineReducers({
-  counter: counterReducer,
+  counter: undoable(counterReducer),
 });
 
 export default appReducer;

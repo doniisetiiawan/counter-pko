@@ -1,62 +1,19 @@
 import {
-  INCREMENT,
   DECREMENT,
+  INCREMENT,
   RESET,
-  UNDO,
-  REDO,
 } from '../actionTypes';
 
-const initialState = {
-  history: [0],
-  currentState: 0,
-};
-
-export default function counterReducer(
-  state = initialState,
-  action,
-) {
-  const { history, currentState } = state;
-  const count = history[currentState];
-
+export default function counterReducer(state = 0, action) {
   switch (action.type) {
     case INCREMENT:
-      return {
-        ...state,
-        history: [...history, count + 1],
-        currentState: history.length,
-      };
+      return state + 1;
 
     case DECREMENT:
-      return {
-        ...state,
-        history: [...history, count - 1],
-        currentState: history.length,
-      };
+      return state - 1;
 
     case RESET:
-      return {
-        ...state,
-        history: [...history, 0],
-        currentState: history.length,
-      };
-
-    case UNDO:
-      return {
-        ...state,
-        currentState:
-          currentState <= 0
-            ? currentState
-            : currentState - 1,
-      };
-
-    case REDO:
-      return {
-        ...state,
-        currentState:
-          currentState >= history.length - 1
-            ? currentState
-            : currentState + 1,
-      };
+      return 0;
 
     default:
       return state;

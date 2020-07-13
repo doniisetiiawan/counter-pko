@@ -2,19 +2,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Counter from '../components/Counter';
-import {
-  increment,
-  decrement,
-  reset,
-  undo,
-  redo,
-} from '../actions';
+import { increment, decrement, reset } from '../actions';
+import { redo, undo } from '../undoable';
 
 const mapStateToProps = (state) => {
   const { counter } = state;
-  const { history, currentState } = counter;
 
-  return { count: history[currentState] };
+  return { count: counter && counter.present };
 };
 
 const mapDispatchToProps = (dispatch) => bindActionCreators(
